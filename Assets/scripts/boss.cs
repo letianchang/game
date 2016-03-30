@@ -27,10 +27,10 @@ public class boss : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other)
-    { gameController.AddScore(scoreValueeee);
+    {  gameController.AddScore(scoreValueeee);
        // x = gameController.Health();
 
-        if (other.tag == "Boundary" || other.tag == "Enemy" || other.tag == "Enemybullet"||other.tag=="asteroid")
+		if (other.tag == "Boundary" || other.tag == "Enemy" || other.tag == "Enemybullet"||other.tag=="asteroid"||other.tag == "Shield")
         {
             return;
         }
@@ -46,7 +46,7 @@ public class boss : MonoBehaviour {
            //else {
              
             // Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-            
+
             Destroy(other.gameObject);
             j = j + 1; //Debug.Log(j);
             //}
@@ -62,7 +62,7 @@ public class boss : MonoBehaviour {
 
 
             
-            Destroy(other.gameObject);
+           Destroy(other.gameObject);
            Destroy(gameObject);
            
            // gameController.Destory(gameObject);

@@ -1,0 +1,4 @@
+I selected to make power up element,when the main character get the element,it can move faster and have more powerful bullets.
+It is valuable because for a third person shooting game,power up element is very important to make play to face the more difficult conditions and get higher scores,it can be the clue that lead player try to kill more eneimes to get it.
+In my assignment,I make the power up appear each time when player destory 4 eneimes.And it will move in a aniamation made in blender and only can survive for several seconds.  These codes are mainly in GameController .cs,playercontroller.cs and destory by time.cs
+Also,I have made a difficult system in the game,as the wave going on,the enemy will have more hp,and the number of them and appearance frequence will keep increasing.This are mainly made in GameController .cs.

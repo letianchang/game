@@ -30,7 +30,7 @@ public class bossbullet : MonoBehaviour
     {
        // x = gameController.Health();
 
-        if (other.tag == "Boundary" || other.tag == "Enemy"||other.tag=="asteroid" )
+		if (other.tag == "Boundary" || other.tag == "Enemy"||other.tag=="asteroid" )
         {
             return;
         }
@@ -43,6 +43,11 @@ public class bossbullet : MonoBehaviour
                 Destroy(other.gameObject);
                 Destroy(gameObject); gameController.GameOver();
             }
+			if (other.tag == "Shield")
+			{
+				//Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+				Destroy(gameObject); 
+			}
           //  else { i = i + 1; Destroy(other.gameObject); }
         }
         if (other.tag == "cai")

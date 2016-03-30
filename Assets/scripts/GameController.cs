@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     private float angle;
     private float angle2;
     private float angle1;
-    public GameObject botton;
+    public GameObject boss;
    // public GameObject jimo;
     public GameObject hazard;
     public GameObject enemyship;
@@ -45,11 +45,32 @@ public class GameController : MonoBehaviour
     public float highscore;
     //private float x = 2;
     //private Done_DestroyByContact gameController;
+
+	//story system:
+	private int isStory;
+	public GameObject mainCamera;
+	public GameObject storyCamera;
+	public GUIText storyText;
+			//private int isStory;
+	private string[] storyContent={ "Evil Boss: You find me finally","Player: ...", 
+		"Evil Boss: I am so scared","Player: ...",
+		"Evil Boss: Don't kill me please", "Player: heihei",
+		"Evil Boss: Oh shit your are dead now","Player: ..."};
+	private int storyIndex;
+	private float storyEndTime;
+
+
+
     void Start()
     {
-        xgtime = xgtime + Time.realtimeSinceStartup;
+        //story init:
+		storyIndex = 0;
+		isStory = 0;
+		storyEndTime = 0.0f;
+
+		xgtime = xgtime + Time.realtimeSinceStartup;
         Debug.Log("xtime" + xgtime);
-        botton.SetActive(false); 
+        boss.SetActive(false); 
         name.SetActive(false);
         botton1.SetActive(false);
         go = 0;
@@ -65,11 +86,12 @@ public class GameController : MonoBehaviour
         //highscore = 0;
         score = 0;
         h = 0;
-        UpdateScore(); StartCoroutine(EnemyWaves());
+        UpdateScore(); 
+		StartCoroutine(EnemyWaves());
         StartCoroutine(SpawnWaves());
     
-      
     }
+
     public Vector3 axiba()
     {
         return ziji;
@@ -82,31 +104,82 @@ public class GameController : MonoBehaviour
     {
         return go; 
     }
+
     void Update()
-    {
+	{
         
-        angle = angle2 * 180 / Mathf.PI; //Debug.Log("2" + angle);
-        if (Time.realtimeSinceStartup > xgtime)
-        { botton.SetActive(true); }
-        if (hs)
-        {
-            if (score > highscore)
-            { highscore = score;
-            
-            }
-            highscoreText.text ="highscore:" + highscore;
-        }
-        if (restart)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-               // xgtime = xgtime + Time.realtimeSinceStartup;
-                Application.LoadLevel(Application.loadedLevel);
-            }
-        }bossji = botton.GetComponent<Rigidbody>().position;
-         ziji = shot11.GetComponent<Rigidbody>().position;
-    }
-   public int Health()
+		angle = angle2 * 180 / Mathf.PI; //Debug.Log("2" + angle);
+		if (Time.realtimeSinceStartup > xgtime) { 
+			boss.SetActive (true);
+		}
+			//enter story mode
+		if (boss.activeSelf) {
+			if (isStory == 0) {
+				isStory = 1;
+				gameOverText.text = "press \"Y\" to continue talking";
+				//Shield.gameObject.SetActive (true);
+				Time.timeScale = 0.0f;
+				mainCamera.gameObject.SetActive (false);
+				storyCamera.gameObject.SetActive (true);
+				storyText.gameObject.SetActive (true);
+			} else {	
+				
+				if (Input.GetKeyDown (KeyCode.Y)) {
+					if (storyIndex < storyContent.Length) {
+						storyText.text = storyContent [storyIndex];
+						storyIndex = storyIndex + 1;
+					} else {
+						gameOverText.text = "";
+						mainCamera.gameObject.SetActive (true);
+						storyCamera.gameObject.SetActive (false);
+						storyText.gameObject.SetActive (false);
+						isStory = 2; // story end
+						storyEndTime = Time.realtimeSinceStartup;
+
+
+						//Shield.gameObject.SetActive (false);
+					}
+				}
+			}
+			if (isStory == 2 ) {
+				if (Time.realtimeSinceStartup - storyEndTime < 1.5f) {
+					gameOverText.text = "get ready!";
+				} else if (Time.realtimeSinceStartup - storyEndTime < 2) {
+					gameOverText.text = "Go!";				
+				} else {
+					gameOverText.text = "";
+					isStory = 3;
+					Time.timeScale = 1.0f;
+				}
+			}
+		}
+			
+
+		if (hs) 
+		{
+			if (score > highscore)
+			{ 
+				highscore = score;            
+			}
+			highscoreText.text = "highscore:" + highscore;
+		}
+
+		if (restart) 
+		{
+			if (Input.GetKeyDown (KeyCode.R)) 
+			{
+				// xgtime = xgtime + Time.realtimeSinceStartup;
+				Application.LoadLevel (Application.loadedLevel);
+			}
+		}
+			bossji = boss.GetComponent<Rigidbody> ().position;
+			ziji = shot11.GetComponent<Rigidbody> ().position;
+
+
+		}
+
+   
+	public int Health()
     {
        // x = x + 0.5f;
         int t = h/2+1;
