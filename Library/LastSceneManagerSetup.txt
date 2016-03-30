@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/scene/danmu.unity
+  isLoaded: 1
+  isActive: 1
