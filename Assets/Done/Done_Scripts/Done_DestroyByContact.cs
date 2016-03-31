@@ -25,8 +25,8 @@ public class Done_DestroyByContact : MonoBehaviour
 		}
         
 	}
-   
-	void OnTriggerEnter (Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
         x = gameController.Health();
 
@@ -36,34 +36,41 @@ public class Done_DestroyByContact : MonoBehaviour
         }
         else
         {
-            if (other.tag == "Player")
+            if (other.tag == "Shield")
             {
-                Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-
-                Destroy(other.gameObject);
-                Destroy(gameObject); gameController.GameOver();
+                Destroy(gameObject);
             }
-            else { i = i + 1; Destroy(other.gameObject); }
+            else
+            {
+                if (other.tag == "Player")
+                {
+                    Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+
+                    Destroy(other.gameObject);
+                    Destroy(gameObject); gameController.GameOver();
+                }
+                else { i = i + 1; Destroy(other.gameObject); }
+            }
         }
-        
-        if (i ==x)
+
+        if (i == x)
         {
-		if (explosion != null)
-		{
-            Instantiate(explosion, transform.position, transform.rotation); 
-		}
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
 
 
 
-      //  speedText.text = "Score: " + j;
-        if (gameController.goo() != 1)
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            gameController.AddScore(scoreValue);
-            gameController.Destory(gameObject);
+            //  speedText.text = "Score: " + j;
+            if (gameController.goo() != 1)
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                gameController.AddScore(scoreValue);
+                gameController.Destory(gameObject);
+            }
         }
-        }
-	}
-    
+    }
+
 }
