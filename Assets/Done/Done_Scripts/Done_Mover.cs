@@ -3,11 +3,15 @@ using System.Collections;
 
 public class Done_Mover : MonoBehaviour
 {
+    Color test = Color.red;
 	public float speed;
    
 	void Start ()
-    {
+    {   
        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+       if (gameObject.tag == "Bullet") {
+           //gameObject.GetComponent<Renderer>().material.color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+       }
      //  Debug.Log("speed" +  GetComponent<Rigidbody>().rotation);
     //    if (GetComponent<Rigidbody>().position.x < -10)
       //  { speed = 0; }

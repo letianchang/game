@@ -37,4 +37,11 @@ public class highscoretable : MonoBehaviour {
 	void Update () {
 	
 	}
+    public void entername()
+    {
+        
+            Application.LoadLevel("menu");
+
+        
+    }
 }

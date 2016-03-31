@@ -109,9 +109,10 @@ public class bosscontrol : MonoBehaviour
                     // Vector3 movement = new Vector3(Mathf.Sin(angle * Mathf.PI / 180), 0.0f, Mathf.Cos(angle * Mathf.PI / 180));
                     angle = angle2 * 180 / Mathf.PI;
                     angle1 = -45 + k * (i - 1) + angle;
-                    shot1 = Instantiate(shot[2], rb.position, Quaternion.Euler(0,  k * (i - 1) , 0)) as GameObject;
-                   // Instantiate(shot[2], rb.position, Quaternion.Euler(0, k * i, 0)); 
-                    l = l + 1;  timerWuDi = Time.realtimeSinceStartup; 
+                    shot1 = Instantiate(shot[2], rb.position, Quaternion.Euler(0, k * (i - 1), 0)) as GameObject; //Debug.Log("wa"); 
+                   // shot1.GetComponent<Renderer>().material.color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+                    // Instantiate(shot[2], rb.position, Quaternion.Euler(0, k * i, 0)); 
+                    l = l + 1;  timerWuDi = Time.time; 
                 }
                
          
@@ -119,12 +120,12 @@ public class bosscontrol : MonoBehaviour
                 if (l >=24*shotSpawn  )
                 {
                    
-                    if (Time.realtimeSinceStartup > timerWuDi && Time.realtimeSinceStartup - timerWuDi >=3)
+                    if (Time.time > timerWuDi && Time.time - timerWuDi >=3)
                     { q = 1; }
-                    if (Time.realtimeSinceStartup - timerWuDi >= 10)
-                    { q = 2; }
-                    if (Time.realtimeSinceStartup - timerWuDi >= 15)
-                    { special1 = 0; d = 3f; }
+                    if (Time.time - timerWuDi >= 10)
+                    { q = 2; Debug.Log("ha"); }
+                    if (Time.time - timerWuDi >= 15)
+                    { special1 = 0; d = 6f; }
                 }  
         }
                 //GetComponent<AudioSource>().Play();
@@ -152,12 +153,14 @@ public class bosscontrol : MonoBehaviour
                         angle = angle2 * 180 / Mathf.PI;
                         angle1 = -45 + k * (i - 1) + angle;
                         if (jiou% 2 == 0)
-                        { shot1 = Instantiate(shot[1], rb.position, Quaternion.Euler(0, -45 + k * (i - 1) , 0)) as GameObject; }
+                        { //Debug.Log("nani1"); 
+                            shot1 = Instantiate(shot[1], rb.position, Quaternion.Euler(0, -45 + k * (i - 1), 0)) as GameObject; }
                         if (jiou % 2 != 0)
-                        { 
+                        {
+                          //  Debug.Log("nani2"); 
                         shot1 = Instantiate(shot[1], rb.position, Quaternion.Euler(0, -45 + k * (i - 1) - angle, 0)) as GameObject;}
                         // Instantiate(shot[2], rb.position, Quaternion.Euler(0, k * i, 0)); 
-                        l = l + 1; timerWuDi = Time.realtimeSinceStartup;
+                        l = l + 1; timerWuDi = Time.time;
                         shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -5;
                     }
 
@@ -166,7 +169,7 @@ public class bosscontrol : MonoBehaviour
                     if (l >= 6 * 4)
                     {
 
-                        if (Time.realtimeSinceStartup - timerWuDi >=1)
+                        if (Time.time - timerWuDi >=1)
                         { l = 0; jiou = jiou + 1; }
                             
                     }
@@ -181,12 +184,12 @@ public class bosscontrol : MonoBehaviour
             {
 
 
-                nextFire = Time.time + fireRate;
+                nextFire = Time.time + fireRate+0.5f;
                 for (int i = 0; i <= 10; i++)
                 {
 
-                    Vector3 lol=new Vector3((i-5)*2,0.0f,0.0f);
-                    Vector3 lol1 = new Vector3((i - 5) * 2+1, 0.0f, 0.0f);
+                    Vector3 lol=new Vector3((i-5)*2.5f,0.0f,0.0f);
+                    Vector3 lol1 = new Vector3((i - 5) * 2.5f+1, 0.0f, 0.0f);
 
                     if (l < 6 * 4)
                     {
@@ -194,7 +197,7 @@ public class bosscontrol : MonoBehaviour
                       // shot1 = Instantiate(shot[1], shotSpawn1[0].position+lol, shotSpawn1[0].rotation)as GameObject;
                         // Instantiate(shot[1], rb.position + lol, rb.rotation) 
                         if (l % 2 != 0) { shot1 = Instantiate(shot[1], shotSpawn1[0].position + lol1, shotSpawn1[0].rotation) as GameObject; shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -2.5f; l = l + 1; }
-                         timerWuDi = Time.realtimeSinceStartup;
+                         timerWuDi = Time.time;
                       //  shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -5;
                     }
 
@@ -203,7 +206,7 @@ public class bosscontrol : MonoBehaviour
                     if (l >= 6 * 4)
                     {
 
-                        if (Time.realtimeSinceStartup - timerWuDi >= 1)
+                        if (Time.time - timerWuDi >= 1)
                         { special2 = special2 + 1; Debug.Log(special2);  l = 0;}
    if (special2== 3)
    {

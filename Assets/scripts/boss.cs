@@ -9,11 +9,11 @@ public class boss : MonoBehaviour {
     public GameObject playerExplosion;
     public int scoreValueeee;
     private GameController gameController;
-    
+    public GUIText BossHPText;
     private int j = 0, x=999;
     void Start()
     {
-
+        
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {
@@ -25,9 +25,12 @@ public class boss : MonoBehaviour {
         }
 
     }
-
+    void Update()
+    {
+        BossHPText.text = "hp"+(x - j); 
+    }
     void OnTriggerEnter(Collider other)
-    {  gameController.AddScore(scoreValueeee);
+    {  
        // x = gameController.Health();
 
 		if (other.tag == "Boundary" || other.tag == "Enemy" || other.tag == "Enemybullet"||other.tag=="asteroid"||other.tag == "Shield")
@@ -36,6 +39,7 @@ public class boss : MonoBehaviour {
         }
         else
         {
+            gameController.AddScore(scoreValueeee);
             /*if (other.tag == "Player")
             {
                 Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
@@ -46,9 +50,11 @@ public class boss : MonoBehaviour {
            //else {
              
             // Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-
+            if (other.tag == "Laser")
+            { j = j + 1; }
+            else { 
             Destroy(other.gameObject);
-            j = j + 1; //Debug.Log(j);
+            j = j + 1; }//Debug.Log(j);
             //}
         }
 

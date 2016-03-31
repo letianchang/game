@@ -28,11 +28,13 @@ public class GameController : MonoBehaviour
     public float enemyspawnWait;
     public float xgtime;
     public float enemywaveWait;
-    private int h;
+    private float h;
     public GUIText scoreText;
     public GUIText restartText;
     public GUIText gameOverText;
     public GUIText highscoreText;
+ 
+    public GUIText AsteroidHPText;
    // public int jimoCount;
     private bool gameOver;
     private bool restart;
@@ -68,7 +70,7 @@ public class GameController : MonoBehaviour
 		isStory = 0;
 		storyEndTime = 0.0f;
 
-		xgtime = xgtime + Time.realtimeSinceStartup;
+		xgtime = xgtime + Time.time;
         Debug.Log("xtime" + xgtime);
         boss.SetActive(false); 
         name.SetActive(false);
@@ -107,9 +109,10 @@ public class GameController : MonoBehaviour
 
     void Update()
 	{
-        
+
+      AsteroidHPText.text="xg : "+Health();;
 		angle = angle2 * 180 / Mathf.PI; //Debug.Log("2" + angle);
-		if (Time.realtimeSinceStartup > xgtime) { 
+		if (Time.time > xgtime) { 
 			boss.SetActive (true);
 		}
 			//enter story mode
@@ -134,17 +137,22 @@ public class GameController : MonoBehaviour
 						storyCamera.gameObject.SetActive (false);
 						storyText.gameObject.SetActive (false);
 						isStory = 2; // story end
-						storyEndTime = Time.realtimeSinceStartup;
+						storyEndTime = Time.time;
 
 
 						//Shield.gameObject.SetActive (false);
 					}
 				}
 			}
-			if (isStory == 2 ) {
-				if (Time.realtimeSinceStartup - storyEndTime < 1.5f) {
+            if (isStory == 2)
+            {
+                //Debug.Log(Time.realtimeSinceStartup); Debug.Log("story"+storyEndTime);
+                if (Time.realtimeSinceStartup - storyEndTime < 1.5f)
+                {
 					gameOverText.text = "get ready!";
-				} else if (Time.realtimeSinceStartup - storyEndTime < 2) {
+                }
+                else if (Time.realtimeSinceStartup - storyEndTime < 2)
+                {
 					gameOverText.text = "Go!";				
 				} else {
 					gameOverText.text = "";
@@ -179,10 +187,10 @@ public class GameController : MonoBehaviour
 		}
 
    
-	public int Health()
+	public float Health()
     {
        // x = x + 0.5f;
-        int t = h/2+1;
+        float t = h/2+1;
        
        
        return t; 
@@ -195,7 +203,7 @@ public class GameController : MonoBehaviour
             for (int i = 0; i < hazardCount; i++)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z) ;
-                Quaternion spawnRotation = Quaternion.identity; Debug.Log("1" + spawnPosition);
+                Quaternion spawnRotation = Quaternion.identity; //Debug.Log("1" + spawnPosition);
 
                shot1= Instantiate(hazard, spawnPosition, spawnRotation)as GameObject; 
                 /*if (i % 6 == 0&&i<=24) {
@@ -228,14 +236,16 @@ public class GameController : MonoBehaviour
             {
                 Vector3 spawnPosition1 = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
-                if (Time.realtimeSinceStartup < xgtime)
+                if (Time.time < xgtime)
                 {
                     
                    shot1= Instantiate(enemyship, spawnPosition1, spawnRotation)as GameObject;
                    // botton.SetActive(false);
                    
                 }
-                else { Debug.Log("aaa"); }
+                else { 
+                    //Debug.Log("aaa"); 
+                }
                 /*if (i % 6 == 0&&i<=24) {
                 Vector3 jimoPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Instantiate(jimo, jimoPosition, spawnRotation);  }*/

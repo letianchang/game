@@ -13,7 +13,7 @@ public class bossbullet : MonoBehaviour
     //private int i = 0, x;
     void Start()
     {
-
+        //gameObject.GetComponent<Renderer>().material.color = new Color(Random.Range(0.8f, 1f), 0, 0);
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {

@@ -7,10 +7,12 @@ public class Done_DestroyByContact : MonoBehaviour
     public Vector3 spawnValues;
 	public GameObject explosion;
 	public GameObject playerExplosion;
+    //public GameObject explosion1;
 	public int scoreValue;
 	private GameController gameController;
 
-    private int i = 0, x ; 
+    private float x ;
+    private float i;
 	void Start ()
     {
         
@@ -49,11 +51,18 @@ public class Done_DestroyByContact : MonoBehaviour
                     Destroy(other.gameObject);
                     Destroy(gameObject); gameController.GameOver();
                 }
-                else { i = i + 1; Destroy(other.gameObject); }
+                else {
+                      if(other.tag == "Laser")
+                      { 
+                          i = i + 0.5f; //Instantiate(explosion1, transform.position, transform.rotation); 
+                      } 
+                      else
+                      { i = i + 1; Destroy(other.gameObject);  }
+                     }
             }
         }
 
-        if (i == x)
+        if (i >= x)
         {
             if (explosion != null)
             {

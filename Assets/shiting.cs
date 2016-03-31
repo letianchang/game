@@ -41,7 +41,7 @@ public class shiting : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         time = jimo1.jimo();
         angle = 90;
-        st = Time.realtimeSinceStartup;
+        st = Time.time;
        // Debug.Log(time);
     }
     public float xiba()
@@ -53,7 +53,7 @@ public class shiting : MonoBehaviour
     {
         //Debug.Log(xiba());
         GetComponent<Rigidbody>().velocity = transform.forward * speed; 
-        if (Time.realtimeSinceStartup -st>time  && wa == 0)
+        if (Time.time -st>time  && wa == 0)
         { 
             //Debug.Log("st" + st); Debug.Log("time" + Time.realtimeSinceStartup); Debug.Log("time" + time);
             GetComponent<Rigidbody>().velocity = transform.forward * 0; }
