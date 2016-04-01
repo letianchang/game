@@ -56,10 +56,21 @@ public class GameController : MonoBehaviour
 			//private int isStory;
 	private string[] storyContent={ "Evil Boss: You find me finally","Player: ...", 
 		"Evil Boss: I am so scared","Player: ...",
-		"Evil Boss: Don't kill me please", "Player: heihei",
-		"Evil Boss: Oh shit your are dead now","Player: ..."};
+		"Evil Boss: Don't kill me please", "Player: No",
+		"Evil Boss: Oh your are dead now","Player: ..."};
 	private int storyIndex;
 	private float storyEndTime;
+
+	//operate system:
+	private int isPause;
+
+	//order input & Chat system:
+	public InputField orderInput;
+	private int isInput;
+	private string inputText;
+
+	// power up gameobject
+	public GameObject shield;
 
 
 
@@ -69,6 +80,12 @@ public class GameController : MonoBehaviour
 		storyIndex = 0;
 		isStory = 0;
 		storyEndTime = 0.0f;
+
+		//Operate system:
+		isPause = 0;
+
+		//order input & Chat system:
+		isInput = 0;
 
 		xgtime = xgtime + Time.time;
         Debug.Log("xtime" + xgtime);
@@ -107,15 +124,16 @@ public class GameController : MonoBehaviour
         return go; 
     }
 
-    void Update()
+    void Update ()
 	{
 
-      AsteroidHPText.text="xg : "+Health();;
+		AsteroidHPText.text = "xg : " + Health ();
+		;
 		angle = angle2 * 180 / Mathf.PI; //Debug.Log("2" + angle);
 		if (Time.time > xgtime) { 
 			boss.SetActive (true);
 		}
-			//enter story mode
+		//enter story mode
 		if (boss.activeSelf) {
 			if (isStory == 0) {
 				isStory = 1;
@@ -137,22 +155,18 @@ public class GameController : MonoBehaviour
 						storyCamera.gameObject.SetActive (false);
 						storyText.gameObject.SetActive (false);
 						isStory = 2; // story end
-						storyEndTime = Time.time;
+						storyEndTime = Time.realtimeSinceStartup;
 
 
 						//Shield.gameObject.SetActive (false);
 					}
 				}
 			}
-            if (isStory == 2)
-            {
-                //Debug.Log(Time.realtimeSinceStartup); Debug.Log("story"+storyEndTime);
-                if (Time.realtimeSinceStartup - storyEndTime < 1.5f)
-                {
+			if (isStory == 2) {
+				//Debug.Log(Time.realtimeSinceStartup); Debug.Log("story"+storyEndTime);
+				if (Time.realtimeSinceStartup - storyEndTime < 1.5f) {
 					gameOverText.text = "get ready!";
-                }
-                else if (Time.realtimeSinceStartup - storyEndTime < 2)
-                {
+				} else if (Time.realtimeSinceStartup - storyEndTime < 2) {
 					gameOverText.text = "Go!";				
 				} else {
 					gameOverText.text = "";
@@ -161,6 +175,39 @@ public class GameController : MonoBehaviour
 				}
 			}
 		}
+
+		if (Input.GetKeyDown (KeyCode.P) && !orderInput.IsActive()) {
+			if (isPause == 0) {
+				Time.timeScale = 0.0f;
+				isPause = 1;
+			} else if (isPause == 1) {
+				Time.timeScale = 1.0f;
+				isPause = 0;
+			}
+		}
+
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			if (isInput == 0) {
+				orderInput.gameObject.SetActive (true);
+				Time.timeScale = 0.0f;
+				isInput = 1;
+				orderInput.ActivateInputField();
+			} else if (isInput == 1) {
+				inputText = orderInput.text;
+				if (inputText == "whosyourdaddy") {
+					if (shield.gameObject.activeInHierarchy) {
+						shield.gameObject.SetActive (false);
+					} else {
+						shield.gameObject.SetActive (true);
+					}
+				}
+				orderInput.text = "";
+				orderInput.gameObject.SetActive (false);
+				Time.timeScale = 1.0f;
+				isInput = 0;
+			}
+		}
+
 			
 
 		if (hs) 

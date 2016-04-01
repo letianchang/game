@@ -15,3 +15,20 @@
 /Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/Scarlet-Devil-Game-master/Temp/bin/Debug/Assembly-CSharp.dll.mdb
 /Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/Scarlet-Devil-Game-master/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/Scarlet-Devil-Game-master/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/obj/Debug/Assembly-CSharp.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/UnityEngine.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/UnityEditor.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Phil/Documents/OneDrive/Study/SP16 450A Video Game/Game GitHub/My Game Respository/450 game github/Temp/bin/Debug/Mono.Cecil.Mdb.dll
