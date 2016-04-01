@@ -237,7 +237,7 @@ public class GameController : MonoBehaviour
 	public float Health()
     {
        // x = x + 0.5f;
-        float t = h/2+1;
+        float t = h/2+0.5f;
        
        
        return t; 
@@ -307,8 +307,8 @@ public class GameController : MonoBehaviour
                 highscoreText.text = " "; 
                 break;
             }
-
-           enemyCount = Mathf.CeilToInt(enemyCount + 1);
+            if (h % 2 == 0) { 
+           enemyCount = Mathf.CeilToInt(enemyCount + 1);}
             
 
         }

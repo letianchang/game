@@ -130,10 +130,13 @@ public class Done_PlayerController : MonoBehaviour
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
-
+        Debug.Log(moveVertical);
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		GetComponent<Rigidbody>().velocity = movement * speed;
-		
+        if (moveVertical > 0)
+        {  
+            GetComponent<Rigidbody>().velocity = movement * speed;
+        }
+        else if (moveVertical<=0) { GetComponent<Rigidbody>().velocity = movement * (speed + 5); }
 		GetComponent<Rigidbody>().position = new Vector3
 		(
 			Mathf.Clamp (GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax), 
@@ -192,7 +195,7 @@ public class Done_PlayerController : MonoBehaviour
             new Vector3(
                shotSpawn[1].position.x,
                 0.0f,
-               shotSpawn[1].position.z + 15.0f
+               shotSpawn[1].position.z + 20.0f
             ),
             Quaternion.Euler(90.0f, 0.0f, 0.0f)
         ) as GameObject;
@@ -201,12 +204,12 @@ public class Done_PlayerController : MonoBehaviour
             new Vector3(
                 shotSpawn[2].position.x,
                 0.0f,
-                shotSpawn[2].transform.position.z + 15.0f
+                shotSpawn[2].transform.position.z + 20.0f
             ),
             Quaternion.Euler(90.0f, 0.0f, 0.0f)
         ) as GameObject;
-        subBulletL.transform.localScale = new Vector3(scale, 15.0f, scale);
-        subBulletR.transform.localScale = new Vector3(scale, 15.0f, scale);
+        subBulletL.transform.localScale = new Vector3(scale, 20.0f, scale);
+        subBulletR.transform.localScale = new Vector3(scale, 20.0f, scale);
         subBulletL.transform.parent = shotSpawn[1].transform;
         subBulletR.transform.parent = shotSpawn[2].transform;
         Destroy(subBulletL, lifeTime);

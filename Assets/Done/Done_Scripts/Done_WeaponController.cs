@@ -43,12 +43,13 @@ public class Done_WeaponController : MonoBehaviour
 	}
     IEnumerator EnemyWaves()
     {
-       yield return new WaitForSeconds(delay);
+       //yield return new WaitForSeconds(delay);
         while (true)
-        {
+        {   if(fireRate>=0.4f)
+                {fireRate = fireRate - 0.2f;}
 
             for (int i = 0; i < 3; i++)
-            {
+            {   
                 angle2 = Mathf.Atan((GetComponent<Rigidbody>().position.x-gameController.ziji.x ) / (GetComponent<Rigidbody>().position.z - gameController.ziji.z));
                // angle = gameController.jiaodu();
                 angle = angle2 * 180 / Mathf.PI;

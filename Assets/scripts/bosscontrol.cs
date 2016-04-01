@@ -25,7 +25,7 @@ public class bosscontrol : MonoBehaviour
     private int special1;
     private int special2;
     private int special3;
-    private int q = 0; private float d = 6f; private float timerWuDi; 
+    private int q = 0; private float d = 5f; private float timerWuDi; 
     public float jimo()
     {
         return d;
@@ -125,7 +125,7 @@ public class bosscontrol : MonoBehaviour
                     if (Time.time - timerWuDi >= 10)
                     { q = 2; Debug.Log("ha"); }
                     if (Time.time - timerWuDi >= 15)
-                    { special1 = 0; d = 6f; }
+                    { special1 = 0; d = 5f; }
                 }  
         }
                 //GetComponent<AudioSource>().Play();
@@ -161,7 +161,7 @@ public class bosscontrol : MonoBehaviour
                         shot1 = Instantiate(shot[1], rb.position, Quaternion.Euler(0, -45 + k * (i - 1) - angle, 0)) as GameObject;}
                         // Instantiate(shot[2], rb.position, Quaternion.Euler(0, k * i, 0)); 
                         l = l + 1; timerWuDi = Time.time;
-                        shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -5;
+                        shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -10;
                     }
 
 
@@ -193,10 +193,10 @@ public class bosscontrol : MonoBehaviour
 
                     if (l < 6 * 4)
                     {
-                        if (l % 2 == 0) {  shot1 = Instantiate(shot[1], shotSpawn1[0].position + lol, shotSpawn1[0].rotation) as GameObject; Debug.Log("asd");shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -5; l = l + 1; }
+                        if (l % 2 == 0) {  shot1 = Instantiate(shot[1], shotSpawn1[0].position + lol, shotSpawn1[0].rotation) as GameObject; Debug.Log("asd");shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -12; l = l + 1; }
                       // shot1 = Instantiate(shot[1], shotSpawn1[0].position+lol, shotSpawn1[0].rotation)as GameObject;
                         // Instantiate(shot[1], rb.position + lol, rb.rotation) 
-                        if (l % 2 != 0) { shot1 = Instantiate(shot[1], shotSpawn1[0].position + lol1, shotSpawn1[0].rotation) as GameObject; shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -2.5f; l = l + 1; }
+                        if (l % 2 != 0) { shot1 = Instantiate(shot[1], shotSpawn1[0].position + lol1, shotSpawn1[0].rotation) as GameObject; shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -5f; l = l + 1; }
                          timerWuDi = Time.time;
                       //  shot1.GetComponent<Rigidbody>().velocity = shot1.transform.forward * -5;
                     }
