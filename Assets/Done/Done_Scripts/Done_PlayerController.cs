@@ -127,7 +127,29 @@ public class Done_PlayerController : MonoBehaviour
     
 
 	void FixedUpdate ()
-	{
+    {
+        Vector3 moveSpawnL = new Vector3(0.3f, 0.0f, 0.6f);
+        Vector3 moveSpawnR = new Vector3(-0.3f, 0.0f, 0.6f);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            shotSpawn[2].transform.localPosition += moveSpawnL;
+            shotSpawn[1].transform.localPosition += moveSpawnR;
+            if (shotSpawn[1].transform.localPosition.x < 1.0f)
+            {
+                shotSpawn[2].transform.localPosition = new Vector3(-1.0f, 0f, 4.0f);
+                shotSpawn[1].transform.localPosition = new Vector3(1.0f, 0f, 4.0f);
+            }
+        }
+        else
+        {
+            shotSpawn[2].transform.localPosition -= moveSpawnL;
+            shotSpawn[1].transform.localPosition -= moveSpawnR;
+            if (shotSpawn[1].transform.localPosition.x > 1.5f)
+            {
+                shotSpawn[2].transform.localPosition = new Vector3(-1.5f, 0f, 0f);
+                shotSpawn[1].transform.localPosition = new Vector3(1.5f, 0f, 0.0f);
+            }
+        }
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
         Debug.Log(moveVertical);

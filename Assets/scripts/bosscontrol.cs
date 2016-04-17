@@ -119,13 +119,13 @@ public class bosscontrol : MonoBehaviour
                 
                 if (l >=24*shotSpawn  )
                 {
-                   
+                    
                     if (Time.time > timerWuDi && Time.time - timerWuDi >=3)
                     { q = 1; }
                     if (Time.time - timerWuDi >= 10)
                     { q = 2; Debug.Log("ha"); }
                     if (Time.time - timerWuDi >= 15)
-                    { special1 = 0; d = 5f; }
+                    { special1 = 0; d = 5f; q = 0;}
                 }  
         }
                 //GetComponent<AudioSource>().Play();

@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{014D5CBB-AD02-BAE9-5BE8-2ED89E714C41}</ProjectGuid>
+    <ProjectGuid>{1AF7E356-2D58-7119-FE6C-C1ED31A62E64}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,7 @@
      <Compile Include="Assets\Done\Done_Scripts\Done_PlayerController.cs" />
      <Compile Include="Assets\Done\Done_Scripts\Done_RandomRotator.cs" />
      <Compile Include="Assets\Done\Done_Scripts\Done_WeaponController.cs" />
+     <Compile Include="Assets\ceshiyongsudu.cs" />
      <Compile Include="Assets\scripts\DestroyByContact.cs" />
      <Compile Include="Assets\scripts\GameController.cs" />
      <Compile Include="Assets\scripts\GroundController.cs" />
